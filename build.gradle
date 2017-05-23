@@ -1,0 +1,38 @@
+group 'info.akang'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+mainClassName = 'info.akang.sqlexport.cli.Main'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    groovyVersion = '2.4.11'
+    spockVersion = '1.1-groovy-2.4'
+    slf4jVersion = '1.7.25'
+    log4jVersion = '2.8.2'
+}
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: groovyVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
+    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '9.0.0.M11'
+
+    testCompile(group: 'org.spockframework', name: 'spock-core', version: spockVersion) {
+        exclude(module: 'groovy-all')
+    }
+    testCompile group: 'org.spockframework', name: 'spock-spring', version: spockVersion
+    testCompile group: 'cglib', name: 'cglib', version: '3.2.4'
+}
