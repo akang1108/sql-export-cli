@@ -2,16 +2,8 @@ package info.akang.sqlexport.cli
 
 trait Command {
 
-    abstract String name()
+    Command nextCommand
 
-    abstract Object execute(String line)
-
-    Optional<String> description() {
-        return Optional.empty()
-    }
-
-    Optional<String> example() {
-        return Optional.empty()
-    }
+    abstract def execute(def input)
 
 }

@@ -7,17 +7,14 @@ class DataSourceFactory {
     DataSource ds
 
     DataSourceFactory() {
-
         File f = new File("postgresql-42.1.1.jar")
         this.class.classLoader.addURL(f.toURL())
 
         ds = new org.apache.tomcat.jdbc.pool.DataSource()
-
-        ds.driverClassName = ''
-        ds.url = ''
-        ds.username = ''
-        ds.password = ''
-
+        ds.driverClassName = 'org.postgresql.Driver'
+        ds.url = 'jdbc:postgresql://localhost:15432/level_up_app'
+        ds.username = 'level_up'
+        ds.password = 'pi=delicious'
         ds.defaultTransactionIsolation = 1
         ds.defaultReadOnly = true
         ds.defaultAutoCommit = false
